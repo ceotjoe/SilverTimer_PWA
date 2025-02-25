@@ -30,7 +30,7 @@ button {
     border-radius: 4px;
     cursor: pointer;
 }
-button:hover {
+button:hover:not(:disabled) {
     background-color: #0056b3;
 }
 button:disabled {
