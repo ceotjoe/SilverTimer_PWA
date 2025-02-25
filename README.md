@@ -2,7 +2,7 @@
 
 Basic web version of the [SilverTimer app](https://www.holzapfel-online.de/silvertimer/)
 
-The web app can be started via this [link](https://ceotjoe.github.io/SilverTimer_PWA/).
+The web app is hosted via GitHub Pages and can be started via this [link](https://ceotjoe.github.io/SilverTimer_PWA/).
 
 The app is intended to calculate the necessary time to reach a desired PPM concentration of silver colloid in water.
 
