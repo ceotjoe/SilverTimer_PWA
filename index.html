@@ -12,22 +12,22 @@
 </head>
 <body>
     <div class="container">
-        <h2>SilverTimer</h2>
-        <input type="number" id="current" placeholder="Current (mA)" step="0.01">
-        <input type="number" id="volume" placeholder="Volume (mL)" step="0.01">
-        <input type="number" id="desiredPpm" placeholder="Desired PPM" step="0.01">
-        <button onclick="calculateTime()">Calculate Time</button>
+        <h2 id="app-title">SilverTimer</h2>
+        <input type="number" id="current" step="0.01">
+        <input type="number" id="volume" step="0.01">
+        <input type="number" id="desiredPpm" step="0.01">
+        <button onclick="calculateTime()" id="calc-btn"></button>
         <div id="result">Time: 00:00:00</div>
-        <button onclick="startTimer()" id="startBtn">Start Timer</button>
-        <button onclick="stopTimer()" id="stopBtn" disabled>Stop Timer</button>
+        <button onclick="startTimer()" id="startBtn"></button>
+        <button onclick="stopTimer()" id="stopBtn" disabled></button>
         <div id="timer">Remaining: 00:00:00</div>
     </div>
 
     <div id="modal" class="modal">
         <div class="modal-content">
-            <h3>Concentration Reached!</h3>
-            <p>The desired silver PPM has been achieved.</p>
-            <button onclick="stopAlarm()">Stop Alarm</button>
+            <h3 id="modal-title"></h3>
+            <p id="modal-text"></p>
+            <button onclick="stopAlarm()" id="modal-btn"></button>
         </div>
     </div>
 
