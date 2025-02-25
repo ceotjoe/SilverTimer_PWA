@@ -11,3 +11,5 @@ Just enter the current in mA, amount of water in ml and the desired PPM. After c
 It is possible to add the app as PWA to tho home screen of mobile devices like android or iOS.
 
 If you're using the timer function, this is currently only working in the foreground. Means the page needs to be open all the time until the timer is finished.
+
+This app was developed as a proof of concept for AI supported development with the help of [Grok AI](https://grok.com). 
