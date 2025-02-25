@@ -6,21 +6,21 @@
     <title>SilverTimer</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="manifest" href="manifest.json">
-    <!-- iOS-specific meta tags for PWA -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon" href="icon-192x192.png"> <!-- Add an icon -->
+    <link rel="apple-touch-icon" href="icon-192x192.png">
 </head>
 <body>
     <div class="container">
         <h2>SilverTimer</h2>
-        <input type="number" id="current" placeholder="Current (A)" step="0.01">
-        <input type="number" id="volume" placeholder="Volume (L)" step="0.01">
+        <input type="number" id="current" placeholder="Current (mA)" step="0.01">
+        <input type="number" id="volume" placeholder="Volume (mL)" step="0.01">
         <input type="number" id="desiredPpm" placeholder="Desired PPM" step="0.01">
         <button onclick="calculateTime()">Calculate Time</button>
-        <div id="result">Time: 0 seconds</div>
+        <div id="result">Time: 00:00:00</div>
         <button onclick="startTimer()" id="startBtn">Start Timer</button>
-        <div id="timer">Remaining: 0 seconds</div>
+        <button onclick="stopTimer()" id="stopBtn" disabled>Stop Timer</button>
+        <div id="timer">Remaining: 00:00:00</div>
     </div>
 
     <div id="modal" class="modal">
@@ -33,7 +33,6 @@
 
     <script src="app.js"></script>
     <script>
-        // Register the service worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/sw.js')
