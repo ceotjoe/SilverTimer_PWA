@@ -45,7 +45,8 @@ function showCompletionAlert() {
     modal.style.display = 'flex';
 
     // Play alarm sound
-    audio = new Audio('alarm.mp3'); // Ensure alarm.mp3 is in the same folder or use a URL
+    audio = new Audio('https://www.soundjay.com/buttons/beep-01a.mp3'); // Ensure alarm.mp3 is in the same folder or use a URL
+    //audio = new Audio('alarm.mp3'); // Ensure alarm.mp3 is in the same folder or use a URL
     audio.loop = true;
     audio.play();
 }
