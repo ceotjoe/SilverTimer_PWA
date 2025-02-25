@@ -5,7 +5,7 @@ const urlsToCache = [
     '/styles.css',
     '/app.js',
     '/manifest.json',
-    '/alarm.mp3' // Cache the alarm sound
+    '/alarm.mp3'
 ];
 
 self.addEventListener('install', event => {
