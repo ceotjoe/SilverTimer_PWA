@@ -9,6 +9,7 @@ let timerInterval = null;
 let audio = null;
 let translations = {};
 let devices = [];
+let updatePending = false; // Flag to track if an update is waiting
 
 // Load translations and devices
 async function loadTranslationsAndDevices() {
@@ -108,6 +109,7 @@ function startTimer() {
             document.getElementById('startBtn').disabled = false;
             document.getElementById('stopBtn').disabled = true;
             showCompletionAlert();
+            checkForPendingUpdate(); // Check for update after timer finishes
         }
     }, 1000);
 }
@@ -119,6 +121,7 @@ function stopTimer() {
         document.getElementById('startBtn').disabled = false;
         document.getElementById('stopBtn').disabled = true;
         updateUIText({ time: formatTime(remainingTime) });
+        checkForPendingUpdate(); // Check for update after stopping timer
     }
 }
 
@@ -140,5 +143,46 @@ function stopAlarm() {
     stopTimer();
 }
 
-// Initialize with translations and devices
-window.onload = loadTranslationsAndDevices;
+// Check if an update is pending and reload if timer isn’t running
+function checkForPendingUpdate() {
+    if (updatePending && !timerInterval) {
+        console.log('Timer finished or stopped, applying pending update...');
+        window.location.reload();
+    }
+}
+
+// Service Worker update handling
+function handleServiceWorkerUpdates() {
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/SilverTimer_PWA/sw.js').then(registration => {
+            registration.addEventListener('updatefound', () => {
+                const newWorker = registration.installing;
+                newWorker.addEventListener('statechange', () => {
+                    if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                        // New service worker is installed and waiting
+                        console.log('New service worker found, update pending...');
+                        updatePending = true;
+                        checkForPendingUpdate(); // Check immediately if no timer is running
+                    }
+                });
+            });
+
+            // Listen for controller change (when new SW takes over)
+            navigator.serviceWorker.addEventListener('controllerchange', () => {
+                if (!timerInterval) {
+                    console.log('Service worker updated, reloading...');
+                    window.location.reload();
+                } else {
+                    console.log('Service worker updated, waiting for timer to finish...');
+                    updatePending = true;
+                }
+            });
+        }).catch(err => console.error('Service Worker registration failed:', err));
+    }
+}
+
+// Initialize with translations, devices, and SW update handling
+window.onload = () => {
+    loadTranslationsAndDevices();
+    handleServiceWorkerUpdates();
+};
