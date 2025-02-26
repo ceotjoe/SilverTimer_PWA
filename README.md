@@ -18,7 +18,7 @@ Maximus devices can be ordered at [ArgentumMaximus](https://www.argentummaximus.
 
 (New devices can be added easily on demand to [devices.json](devices.json))
 
-**Live demo:** (https://ceotjoe.github.io/SilverTimer_PWA/)[https://ceotjoe.github.io/SilverTimer_PWA/]
+**Live demo:** https://ceotjoe.github.io/SilverTimer_PWA/
 
 ## Features
 - **Time Calculation:** Uses Faraday’s law to compute the time needed to reach a specified silver PPM based on current (mA), volume (mL), and desired PPM.
