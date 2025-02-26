@@ -6,7 +6,7 @@ The web app is hosted via GitHub Pages and can be started via this [link](https:
 
 The app is intended to calculate the necessary time to reach a desired PPM concentration of silver colloid in water.
 
-Just enter the current in mA, amount of water in ml and the desired PPM. After clicking the calculate button it will show the time in which the electrolysis is finished.
+Just select the device you own, amount of water in ml and the desired PPM. After clicking the calculate button it will show the time in which the electrolysis is finished.
 
 It is possible to add the app as PWA to tho home screen of mobile devices like android or iOS.
 
