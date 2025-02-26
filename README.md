@@ -33,8 +33,10 @@ The app calculates the time based on the current (from predefined devices), wate
 ### Running Locally
 1. **Clone the Repository:**
 
-```git clone https://github.com/ceotjoe/SilverTimer_PWA.git
-cd SilverTimer_PWA```
+```
+git clone https://github.com/ceotjoe/SilverTimer_PWA.git
+cd SilverTimer_PWA
+```
 
 2. **Serve the App:**
 
@@ -68,7 +70,8 @@ Your device, volume, and PPM selections are saved for the next session.
 
 ## File Structure
 
-```SilverTimer_PWA/
+```
+SilverTimer_PWA/
 ├── index.html         # Main HTML file
 ├── styles.css         # CSS for styling and day/night mode
 ├── app.js             # JavaScript for logic and i18n
@@ -81,7 +84,8 @@ Your device, volume, and PPM selections are saved for the next session.
 ├── locales/
 │   ├── en.json        # English translations
 │   └── de.json        # German translations
-└── README.md          # This file```
+└── README.md          # This file
+```
 
 ## Technical Details
 
