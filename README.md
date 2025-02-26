@@ -6,7 +6,7 @@ SilverTimer is a Progressive Web App (PWA) designed to calculate the time requir
 
 The app calculates the time based on the current (from predefined devices), water volume, and desired PPM, then runs a timer to notify users when the concentration is reached. It supports English and German languages, day/night mode, and persists user settings across sessions.
 
-## Supported devices:
+## Supported devices
 |Device|Current|
 |---|---|
 |Maximus Smart 10 by HDT|10 mA|
