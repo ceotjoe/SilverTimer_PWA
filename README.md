@@ -9,10 +9,12 @@ The app calculates the time based on the current (from predefined devices), wate
 ## Supported devices:
 |Device|Current|
 |---|---|
-|Maximus Smart 10|10 mA|
-|Maximus Smart 20|20 mA|
-|Maximus 20|20 mA|
+|Maximus Smart 10 by HDT|10 mA|
+|Maximus Smart 20 by HDT|20 mA|
+|Maximus 20 by HDT|20 mA|
 |Ionic Pulser|5 mA|
+
+Maximus devices can be ordered at [ArgentumMaximus](https://www.argentummaximus.de)
 
 (New devices can be added easily on demand.)
 
