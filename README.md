@@ -124,7 +124,8 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 - Inspired by electrochemical applications of silver concentration.
 
 >[!NOTE]
->This app was developed just as a proof of concept for AI supported development with the help of [Grok AI](https://grok.com). 
+>This app was developed just as a proof of concept for AI supported development with the help of [Grok AI](https://grok.com).
+>Grok did the research on the Faraday formular for silver, it created the concept for the app and the wole source code. Also the documentatlion like this README.md. I just led it through an iterative approach to finish the app.
 
 >[!IMPORTANT]
 >- If you're using the timer function, this is currently only working in the foreground. Means the page needs to be open all the time until the timer is finished.
