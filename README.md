@@ -8,7 +8,7 @@ The app is intended to calculate the necessary time to reach a desired PPM conce
 
 Just select the device you own, amount of water in ml and the desired PPM. After clicking the calculate button it will show the time in which the electrolysis is finished.
 
-Supported devices:
+Supported devices (can be changed easily on demand):
 
 |Device|Current|
 |---|---|
