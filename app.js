@@ -9,7 +9,7 @@ let timerInterval = null;
 let audio = null;
 let translations = {};
 let devices = [];
-let updatePending = false; // Flag to track if an update is waiting
+let updatePending = false;
 
 // Load translations and devices
 async function loadTranslationsAndDevices() {
@@ -38,15 +38,28 @@ async function loadTranslationsAndDevices() {
     }
 }
 
-// Populate the device dropdown
+// Populate the device dropdown and restore saved selection
 function populateDeviceDropdown() {
     const select = document.getElementById('device');
-    select.innerHTML = '<option value="" disabled selected>' + translations.devicePlaceholder + '</option>';
+    select.innerHTML = '<option value="" disabled>' + translations.devicePlaceholder + '</option>';
     devices.forEach(device => {
         const option = document.createElement('option');
         option.value = device.currentMa;
         option.textContent = `${device.name} (${device.currentMa} mA)`;
         select.appendChild(option);
+    });
+
+    // Restore saved device selection
+    const savedDevice = localStorage.getItem('selectedDevice');
+    if (savedDevice && devices.some(d => d.currentMa.toString() === savedDevice)) {
+        select.value = savedDevice;
+    } else {
+        select.selectedIndex = 0; // Default to placeholder if no valid saved value
+    }
+
+    // Save selection on change
+    select.addEventListener('change', () => {
+        localStorage.setItem('selectedDevice', select.value);
     });
 }
 
@@ -109,7 +122,7 @@ function startTimer() {
             document.getElementById('startBtn').disabled = false;
             document.getElementById('stopBtn').disabled = true;
             showCompletionAlert();
-            checkForPendingUpdate(); // Check for update after timer finishes
+            checkForPendingUpdate();
         }
     }, 1000);
 }
@@ -121,7 +134,7 @@ function stopTimer() {
         document.getElementById('startBtn').disabled = false;
         document.getElementById('stopBtn').disabled = true;
         updateUIText({ time: formatTime(remainingTime) });
-        checkForPendingUpdate(); // Check for update after stopping timer
+        checkForPendingUpdate();
     }
 }
 
@@ -159,15 +172,13 @@ function handleServiceWorkerUpdates() {
                 const newWorker = registration.installing;
                 newWorker.addEventListener('statechange', () => {
                     if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                        // New service worker is installed and waiting
                         console.log('New service worker found, update pending...');
                         updatePending = true;
-                        checkForPendingUpdate(); // Check immediately if no timer is running
+                        checkForPendingUpdate();
                     }
                 });
             });
 
-            // Listen for controller change (when new SW takes over)
             navigator.serviceWorker.addEventListener('controllerchange', () => {
                 if (!timerInterval) {
                     console.log('Service worker updated, reloading...');
