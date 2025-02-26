@@ -24,4 +24,4 @@ If you're using the timer function, this is currently only working in the foregr
 This app was developed just as a proof of concept for AI supported development with the help of [Grok AI](https://grok.com). 
 
 >[!IMPORTANT]
->DISCLAIMER: The PPM in the dispersion will be different due to certain circrumstances while electrolysis. It can only be really measured by probing a sample in laboratory.This app can only replace the >tables which are usually delivered by the manufacturer of the device.
+>DISCLAIMER: The PPM within the dispersion will be different due to certain circrumstances while electrolysis. It can only be really measured by probing a sample in laboratory.This app can only replace the >tables which are usually delivered by the manufacturer of the device.
