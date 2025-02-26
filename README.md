@@ -128,4 +128,4 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 >[!IMPORTANT]
 >- If you're using the timer function, this is currently only working in the foreground. Means the page needs to be open all the time until the timer is finished.
->- DISCLAIMER: The PPM within the dispersion will be different due to certain circrumstances while electrolysis. It can only be really measured by probing a sample in laboratory.This app can only replace the >tables which are usually delivered by the manufacturer of the device.
+>- The real PPM of the metal within the coloidal dispersion will be different due to certain circrumstances while electrolysis. It can only be exactly measured by probing a sample of the dispersion in laboratory. This app is only intended to someway replace the PPM tables which are usually delivered by the manufacturer of the electrolysis device.
