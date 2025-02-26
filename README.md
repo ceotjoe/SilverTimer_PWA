@@ -124,5 +124,5 @@ This project is licensed under the MIT License. See the LICENSE file for details
 >This app was developed just as a proof of concept for AI supported development with the help of [Grok AI](https://grok.com). 
 
 >[!IMPORTANT]
->If you're using the timer function, this is currently only working in the foreground. Means the page needs to be open all the time until the timer is finished.
->DISCLAIMER: The PPM within the dispersion will be different due to certain circrumstances while electrolysis. It can only be really measured by probing a sample in laboratory.This app can only replace the >tables which are usually delivered by the manufacturer of the device.
+>- If you're using the timer function, this is currently only working in the foreground. Means the page needs to be open all the time until the timer is finished.
+>- DISCLAIMER: The PPM within the dispersion will be different due to certain circrumstances while electrolysis. It can only be really measured by probing a sample in laboratory.This app can only replace the >tables which are usually delivered by the manufacturer of the device.
