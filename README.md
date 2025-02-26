@@ -86,6 +86,7 @@ SilverTimer_PWA/
 ├── locales/
 │   ├── en.json        # English translations
 │   └── de.json        # German translations
+├── LICENSE            # License text
 └── README.md          # This file
 ```
 
