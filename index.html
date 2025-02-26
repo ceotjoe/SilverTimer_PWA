@@ -4,34 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SilverTimer</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="/SilverTimer_PWA/styles.css">
+    <link rel="manifest" href="/SilverTimer_PWA/manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon" href="silvertimer192.png">
+    <link rel="apple-touch-icon" href="/SilverTimer_PWA/icon-192x192.png">
 </head>
 <body>
     <div class="container">
-        <h2 id="app-title">SilverTimer</h2>
-        <input type="number" id="current" step="0.01">
-        <input type="number" id="volume" step="0.01">
-        <input type="number" id="desiredPpm" step="0.01">
-        <button onclick="calculateTime()" id="calc-btn"></button>
-        <div id="result">Time: 00:00:00</div>
-        <button onclick="startTimer()" id="startBtn"></button>
-        <button onclick="stopTimer()" id="stopBtn" disabled></button>
-        <div id="timer">Remaining: 00:00:00</div>
+        <h2 data-i18n="appTitle">SilverTimer</h2>
+        <input type="number" id="current" step="0.01" data-i18n-placeholder="currentPlaceholder">
+        <input type="number" id="volume" step="0.01" data-i18n-placeholder="volumePlaceholder">
+        <input type="number" id="desiredPpm" step="0.01" data-i18n-placeholder="ppmPlaceholder">
+        <button onclick="calculateTime()" data-i18n="calcBtn"></button>
+        <div id="result" data-i18n="result" data-i18n-params="time:00:00:00">Time: 00:00:00</div>
+        <button onclick="startTimer()" id="startBtn" data-i18n="startBtn"></button>
+        <button onclick="stopTimer()" id="stopBtn" disabled data-i18n="stopBtn"></button>
+        <div id="timer" data-i18n="timer" data-i18n-params="time:00:00:00">Remaining: 00:00:00</div>
     </div>
 
     <div id="modal" class="modal">
         <div class="modal-content">
-            <h3 id="modal-title"></h3>
-            <p id="modal-text"></p>
-            <button onclick="stopAlarm()" id="modal-btn"></button>
+            <h3 data-i18n="modalTitle"></h3>
+            <p data-i18n="modalText"></p>
+            <button onclick="stopAlarm()" data-i18n="modalBtn"></button>
         </div>
     </div>
 
-    <script src="app.js"></script>
+    <script src="/SilverTimer_PWA/app.js"></script>
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
