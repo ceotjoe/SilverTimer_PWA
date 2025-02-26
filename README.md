@@ -26,7 +26,7 @@ Maximus devices can be ordered at [ArgentumMaximus](https://www.argentummaximus.
 - **Timer:** Runs a countdown timer with a stop option, playing an alarm when complete.
 - **Multi-Language:** Supports English and German, auto-detected from browser settings.
 - **Day/Night Mode:** Adapts to device light/dark mode preferences.
-- **Persistent Settings:** Saves device, volume, and PPM inputs between sessions using localStorage.
+- **Persistent Settings:** Saves device, volume, and PPM inputs between sessions using `localStorage`.
 - **PWA:** Installable on Android, iOS, and desktop with offline support via a service worker.
 - **Auto-Updates:** Updates immediately after deployment, delayed until the timer finishes if running.
 - **Documentation Link:** Includes a link to this README at the bottom of the app.
@@ -44,26 +44,26 @@ cd SilverTimer_PWA
 
 Use a local server (e.g., with Node.js or Python):
 
-Node.js: npx http-server . -p 8000
-Python: python -m http.server 8000
+Node.js: `npx http-server . -p 8000`
+Python: `python -m http.server 8000`
 
 3. **Open in Browser:**
 
-Visit http://localhost:8000/SilverTimer_PWA/ to test locally.
+Visit `http://localhost:8000/SilverTimer_PWA/` to test locally.
 
 ## Deployment
-The app is hosted on GitHub Pages at (https://ceotjoe.github.io/SilverTimer_PWA/)[https://ceotjoe.github.io/SilverTimer_PWA/]. 
+The app is hosted on GitHub Pages at `https://ceotjoe.github.io/SilverTimer_PWA/`. 
 
 To deploy your own version:
 1. Fork or clone this repository.
-2. Push changes to your GitHub repository’s main branch.
-3. Enable GitHub Pages in Settings > Pages, setting the source to main branch and root directory (/).
+2. Push changes to your GitHub repository’s `main` branch.
+3. Enable GitHub Pages in Settings > Pages, setting the source to `main` branch and root directory (`/`).
 
 ## Usage
-- **Select a Device:** Choose a device from the dropdown (e.g., "Device C (500 mA)").
+- **Select a Device:** Choose a device from the dropdown (e.g., "Maximus 20 (20 mA)").
 - **Enter Volume:** Input the water volume in milliliters (e.g., "1000" for 1 liter).
 - **Enter Desired PPM:** Input the target silver concentration (e.g., "10").
-- **Calculate Time:** Click "Calculate Time" (or "Zeit Berechnen" in German) to see the required time in hh:mm:ss.
+- **Calculate Time:** Click "Calculate Time" (or "Zeit Berechnen" in German) to see the required time in `hh:mm:ss`.
 - **Start Timer:** Click "Start Timer" to begin the countdown. Stop it anytime with "Stop Timer".
 - **Completion:** When the timer reaches zero, an alarm sounds until you click "Stop Alarm".
 - **Read Documentation:** Click the "Readme" (or "Liesmich") link at the bottom for more info.
@@ -115,7 +115,7 @@ Contributions are welcome! To contribute:
 Please ensure your changes are tested locally before submitting.
 
 ## License
-This project is licensed under the MIT License. See the LICENSE file for details. (Note: Add a LICENSE file if you choose this license.)
+This project is licensed under the MIT License. See the `LICENSE` file for details.
 
 ## Acknowledgments
 - Built with HTML, CSS, and JavaScript.
