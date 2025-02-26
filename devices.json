@@ -8,11 +8,15 @@
         "currentMa": 20
     },
     {
+        "name": "Maximus 20",
+        "currentMa": 20
+    },
+    {
         "name": "Ionic Pulser",
         "currentMa": 5
     },
     {
-        "name": "30 mA",
+        "name": "30 mA Generator",
         "currentMa": 30
     }
 ]
