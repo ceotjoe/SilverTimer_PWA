@@ -9,11 +9,21 @@ let timerInterval = null;
 let audio = null;
 let translations = {};
 
-// Load translations based on browser language
+// Load translations based on browser language, defaulting to English
 async function loadTranslations() {
-    const userLang = (navigator.language || navigator.languages[0]).startsWith('de') ? 'de' : 'en';
-    const response = await fetch(`/SilverTimer_PWA/locales/${userLang}.json`);
-    translations = await response.json();
+    let userLang = navigator.language || navigator.languages[0];
+    userLang = userLang.split('-')[0]; // Get base language (e.g., 'en' from 'en-US')
+    const supportedLangs = ['en', 'de'];
+    const lang = supportedLangs.includes(userLang) ? userLang : 'en'; // Default to 'en'
+    
+    try {
+        const response = await fetch(`/SilverTimer_PWA/locales/${lang}.json`);
+        translations = await response.json();
+    } catch (error) {
+        console.error('Failed to load translations, falling back to English:', error);
+        const response = await fetch('/SilverTimer_PWA/locales/en.json');
+        translations = await response.json();
+    }
     updateUIText();
 }
 
