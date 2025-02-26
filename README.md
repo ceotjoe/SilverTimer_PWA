@@ -33,11 +33,8 @@ The app calculates the time based on the current (from predefined devices), wate
 ### Running Locally
 1. **Clone the Repository:**
 
-bash
-Wrap
-Copy
-git clone https://github.com/ceotjoe/SilverTimer_PWA.git
-cd SilverTimer_PWA
+```git clone https://github.com/ceotjoe/SilverTimer_PWA.git
+cd SilverTimer_PWA```
 
 2. **Serve the App:**
 
@@ -51,8 +48,9 @@ Python: python -m http.server 8000
 Visit http://localhost:8000/SilverTimer_PWA/ to test locally.
 
 ## Deployment
-The app is hosted on GitHub Pages at (https://ceotjoe.github.io/SilverTimer_PWA/)[https://ceotjoe.github.io/SilverTimer_PWA/]. To deploy your own version:
+The app is hosted on GitHub Pages at (https://ceotjoe.github.io/SilverTimer_PWA/)[https://ceotjoe.github.io/SilverTimer_PWA/]. 
 
+To deploy your own version:
 1. Fork or clone this repository.
 2. Push changes to your GitHub repository’s main branch.
 3. Enable GitHub Pages in Settings > Pages, setting the source to main branch and root directory (/).
@@ -70,7 +68,7 @@ Your device, volume, and PPM selections are saved for the next session.
 
 ## File Structure
 
-SilverTimer_PWA/
+```SilverTimer_PWA/
 ├── index.html         # Main HTML file
 ├── styles.css         # CSS for styling and day/night mode
 ├── app.js             # JavaScript for logic and i18n
@@ -83,7 +81,7 @@ SilverTimer_PWA/
 ├── locales/
 │   ├── en.json        # English translations
 │   └── de.json        # German translations
-└── README.md          # This file
+└── README.md          # This file```
 
 ## Technical Details
 
