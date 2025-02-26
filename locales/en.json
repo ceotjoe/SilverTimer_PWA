@@ -1,0 +1,15 @@
+{
+    "appTitle": "SilverTimer",
+    "currentPlaceholder": "Current (mA)",
+    "volumePlaceholder": "Volume (mL)",
+    "ppmPlaceholder": "Desired PPM",
+    "calcBtn": "Calculate Time",
+    "startBtn": "Start Timer",
+    "stopBtn": "Stop Timer",
+    "result": "Time: {time}",
+    "timer": "Remaining: {time}",
+    "modalTitle": "Concentration Reached!",
+    "modalText": "The desired silver PPM has been achieved.",
+    "modalBtn": "Stop Alarm",
+    "error": "Please enter valid positive numbers."
+}
