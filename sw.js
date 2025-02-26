@@ -7,7 +7,8 @@ const urlsToCache = [
     '/SilverTimer_PWA/manifest.json',
     '/SilverTimer_PWA/alarm.mp3',
     '/SilverTimer_PWA/locales/en.json',
-    '/SilverTimer_PWA/locales/de.json'
+    '/SilverTimer_PWA/locales/de.json',
+    '/SilverTimer_PWA/devices.json'
 ];
 
 self.addEventListener('install', event => {
