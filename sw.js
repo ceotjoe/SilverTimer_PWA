@@ -1,4 +1,4 @@
-const CACHE_NAME = 'silvertimer-cache-v1';
+const CACHE_NAME = 'silvertimer-cache-v1'; // Keep this static unless automating versioning
 const urlsToCache = [
     '/SilverTimer_PWA/',
     '/SilverTimer_PWA/index.html',
@@ -15,6 +15,26 @@ self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then(cache => cache.addAll(urlsToCache))
+            .then(() => self.skipWaiting()) // Immediately activate the new service worker
+    );
+});
+
+self.addEventListener('activate', event => {
+    event.waitUntil(
+        Promise.all([
+            // Clean up old caches
+            caches.keys().then(cacheNames => {
+                return Promise.all(
+                    cacheNames.map(cacheName => {
+                        if (cacheName !== CACHE_NAME) {
+                            return caches.delete(cacheName);
+                        }
+                    })
+                );
+            }),
+            // Take control of all clients immediately
+            self.clients.claim()
+        ])
     );
 });
 
@@ -22,20 +42,5 @@ self.addEventListener('fetch', event => {
     event.respondWith(
         caches.match(event.request)
             .then(response => response || fetch(event.request))
-    );
-});
-
-self.addEventListener('activate', event => {
-    const cacheWhitelist = [CACHE_NAME];
-    event.waitUntil(
-        caches.keys().then(cacheNames => {
-            return Promise.all(
-                cacheNames.map(cacheName => {
-                    if (!cacheWhitelist.includes(cacheName)) {
-                        return caches.delete(cacheName);
-                    }
-                })
-            );
-        })
     );
 });
