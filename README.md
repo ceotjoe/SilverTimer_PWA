@@ -1,4 +1,4 @@
-# SilverTimer_PWA
+# SilverTimer
 
 Basic web version of the [SilverTimer app](https://www.holzapfel-online.de/silvertimer/)
 
