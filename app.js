@@ -8,23 +8,45 @@ let remainingTime = 0;
 let timerInterval = null;
 let audio = null;
 let translations = {};
+let devices = [];
 
-// Load translations based on browser language, defaulting to English
-async function loadTranslations() {
+// Load translations and devices
+async function loadTranslationsAndDevices() {
     let userLang = navigator.language || navigator.languages[0];
-    userLang = userLang.split('-')[0]; // Get base language (e.g., 'en' from 'en-US')
+    userLang = userLang.split('-')[0];
     const supportedLangs = ['en', 'de'];
-    const lang = supportedLangs.includes(userLang) ? userLang : 'en'; // Default to 'en'
-    
+    const lang = supportedLangs.includes(userLang) ? userLang : 'en';
+
     try {
-        const response = await fetch(`/SilverTimer_PWA/locales/${lang}.json`);
-        translations = await response.json();
+        const [transResponse, devicesResponse] = await Promise.all([
+            fetch(`/SilverTimer_PWA/locales/${lang}.json`),
+            fetch('/SilverTimer_PWA/devices.json')
+        ]);
+        translations = await transResponse.json();
+        devices = await devicesResponse.json();
+        populateDeviceDropdown();
+        updateUIText();
     } catch (error) {
-        console.error('Failed to load translations, falling back to English:', error);
-        const response = await fetch('/SilverTimer_PWA/locales/en.json');
-        translations = await response.json();
+        console.error('Failed to load resources, falling back to English:', error);
+        const transResponse = await fetch('/SilverTimer_PWA/locales/en.json');
+        translations = await transResponse.json();
+        const devicesResponse = await fetch('/SilverTimer_PWA/devices.json');
+        devices = await devicesResponse.json();
+        populateDeviceDropdown();
+        updateUIText();
     }
-    updateUIText();
+}
+
+// Populate the device dropdown
+function populateDeviceDropdown() {
+    const select = document.getElementById('device');
+    select.innerHTML = '<option value="" disabled selected>' + translations.devicePlaceholder + '</option>';
+    devices.forEach(device => {
+        const option = document.createElement('option');
+        option.value = device.currentMa;
+        option.textContent = `${device.name} (${device.currentMa} mA)`;
+        select.appendChild(option);
+    });
 }
 
 // Update UI with translations
@@ -56,7 +78,7 @@ function formatTime(seconds) {
 }
 
 function calculateTime() {
-    const currentMa = parseFloat(document.getElementById('current').value) || 0; // Current in mA
+    const currentMa = parseFloat(document.getElementById('device').value) || 0; // Current in mA from dropdown
     const volumeMl = parseFloat(document.getElementById('volume').value) || 0;   // Volume in mL
     const desiredPpm = parseFloat(document.getElementById('desiredPpm').value) || 0;
 
@@ -118,5 +140,5 @@ function stopAlarm() {
     stopTimer();
 }
 
-// Initialize with translations
-window.onload = loadTranslations;
+// Initialize with translations and devices
+window.onload = loadTranslationsAndDevices;

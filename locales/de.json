@@ -1,6 +1,6 @@
 {
     "appTitle": "SilverTimer",
-    "currentPlaceholder": "Strom (mA)",
+    "devicePlaceholder": "Gerät Auswählen",
     "volumePlaceholder": "Volumen (mL)",
     "ppmPlaceholder": "Gewünschte PPM",
     "calcBtn": "Zeit Berechnen",
@@ -11,5 +11,5 @@
     "modalTitle": "Konzentration Erreicht!",
     "modalText": "Die gewünschte Silber-PPM wurde erreicht.",
     "modalBtn": "Alarm Stoppen",
-    "error": "Bitte geben Sie gültige positive Zahlen ein."
+    "error": "Bitte wählen Sie ein Gerät und geben Sie gültige positive Zahlen für Volumen und PPM ein."
 }

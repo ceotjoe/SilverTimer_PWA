@@ -1,0 +1,18 @@
+[
+    {
+        "name": "Maximus Smart 10",
+        "currentMa": 10
+    },
+    {
+        "name": "Maximus Smart 20",
+        "currentMa": 20
+    },
+    {
+        "name": "Ionic Pulser",
+        "currentMa": 5
+    },
+    {
+        "name": "30 mA",
+        "currentMa": 30
+    }
+]
