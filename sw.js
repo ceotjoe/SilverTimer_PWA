@@ -1,11 +1,13 @@
 const CACHE_NAME = 'silvertimer-cache-v1';
 const urlsToCache = [
-    '/',
-    '/index.html',
-    '/styles.css',
-    '/app.js',
-    '/manifest.json',
-    '/alarm.mp3'
+    '/SilverTimer_PWA/',
+    '/SilverTimer_PWA/index.html',
+    '/SilverTimer_PWA/styles.css',
+    '/SilverTimer_PWA/app.js',
+    '/SilverTimer_PWA/manifest.json',
+    '/SilverTimer_PWA/alarm.mp3',
+    '/SilverTimer_PWA/locales/en.json',
+    '/SilverTimer_PWA/locales/de.json'
 ];
 
 self.addEventListener('install', event => {
