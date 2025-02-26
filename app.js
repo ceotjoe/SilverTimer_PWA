@@ -26,6 +26,7 @@ async function loadTranslationsAndDevices() {
         translations = await transResponse.json();
         devices = await devicesResponse.json();
         populateDeviceDropdown();
+        restoreInputValues(); // Restore saved inputs after loading translations
         updateUIText();
     } catch (error) {
         console.error('Failed to load resources, falling back to English:', error);
@@ -34,6 +35,7 @@ async function loadTranslationsAndDevices() {
         const devicesResponse = await fetch('/SilverTimer_PWA/devices.json');
         devices = await devicesResponse.json();
         populateDeviceDropdown();
+        restoreInputValues();
         updateUIText();
     }
 }
@@ -49,17 +51,41 @@ function populateDeviceDropdown() {
         select.appendChild(option);
     });
 
-    // Restore saved device selection
     const savedDevice = localStorage.getItem('selectedDevice');
     if (savedDevice && devices.some(d => d.currentMa.toString() === savedDevice)) {
         select.value = savedDevice;
     } else {
-        select.selectedIndex = 0; // Default to placeholder if no valid saved value
+        select.selectedIndex = 0;
     }
 
-    // Save selection on change
     select.addEventListener('change', () => {
         localStorage.setItem('selectedDevice', select.value);
+    });
+}
+
+// Restore saved input values for volume and PPM
+function restoreInputValues() {
+    const volumeInput = document.getElementById('volume');
+    const ppmInput = document.getElementById('desiredPpm');
+
+    const savedVolume = localStorage.getItem('volume');
+    if (savedVolume) {
+        volumeInput.value = savedVolume;
+    }
+
+    const savedPpm = localStorage.getItem('desiredPpm');
+    if (savedPpm) {
+        ppmInput.value = savedPpm;
+    }
+
+    // Save volume on change
+    volumeInput.addEventListener('input', () => {
+        localStorage.setItem('volume', volumeInput.value);
+    });
+
+    // Save PPM on change
+    ppmInput.addEventListener('input', () => {
+        localStorage.setItem('desiredPpm', ppmInput.value);
     });
 }
 
