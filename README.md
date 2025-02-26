@@ -16,7 +16,7 @@ The app calculates the time based on the current (from predefined devices), wate
 
 Maximus devices can be ordered at [ArgentumMaximus](https://www.argentummaximus.de)
 
-(New devices can be added easily on demand.)
+(New devices can be added easily on demand to [devices.json](devices.json))
 
 **Live demo:** (https://ceotjoe.github.io/SilverTimer_PWA/)[https://ceotjoe.github.io/SilverTimer_PWA/]
 
