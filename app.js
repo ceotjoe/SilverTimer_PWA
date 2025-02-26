@@ -94,7 +94,7 @@ function showCompletionAlert() {
     const modal = document.getElementById('modal');
     modal.style.display = 'flex';
     audio = new Audio('https://www.soundjay.com/buttons/beep-01a.mp3'); // Ensure alarm.mp3 is in the same folder or use a URL
-    //audio = new Audio('/SilverTimer_PWA/alarm.mp3');
+    //audio = new Audio('/SilverTimer_PWA/alarm.wav');
     audio.loop = true;
     audio.play();
 }
