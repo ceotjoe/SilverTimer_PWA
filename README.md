@@ -51,6 +51,10 @@ Python: `python -m http.server 8000`
 
 Visit `http://localhost:8000/SilverTimer_PWA/` to test locally.
 
+### Install app on home screen of Android or iOS
+
+Follow the guides in the [WIKI](https://github.com/ceotjoe/SilverTimer_PWA/wiki).
+
 ## Deployment
 The app is hosted on GitHub Pages at `https://ceotjoe.github.io/SilverTimer_PWA/`. 
 
