@@ -13,4 +13,16 @@
     "modalBtn": "Stop Alarm",
     "error": "Please select a device and enter valid positive numbers for volume and PPM.",
     "readmeLink": "Readme"
+    "statsBtn": "Statistics",
+    "statsTitle": "Usage Statistics",
+    "date": "Date",
+    "time": "Time",
+    "device": "Device",
+    "current": "Current (mA)",
+    "duration": "Duration (hh:mm:ss)",
+    "volume": "Volume (mL)",
+    "ppm": "PPM",
+    "exportBtn": "Export to CSV",
+    "backBtn": "Back",
+    "noData": "No usage data available."
 }
