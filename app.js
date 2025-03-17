@@ -117,17 +117,36 @@ function formatTime(seconds) {
     return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
 }
 
+// Function to record usage data
+function recordUsage(deviceName, currentMa, duration, volume, ppm) {
+    const now = new Date();
+    const date = now.toLocaleDateString();
+    const time = now.toLocaleTimeString();
+    const usage = { date, time, device: deviceName, currentMa, duration, volume, ppm };
+
+    let stats = JSON.parse(localStorage.getItem('usageStats')) || [];
+    stats.push(usage);
+    localStorage.setItem('usageStats', JSON.stringify(stats));
+}
+
+// Updated calculateTime to record usage
 function calculateTime() {
-    const currentMa = parseFloat(document.getElementById('device').value) || 0; // Current in mA from dropdown
-    const volumeMl = parseFloat(document.getElementById('volume').value) || 0;   // Volume in mL
+    const deviceSelect = document.getElementById('device');
+    const currentMa = parseFloat(deviceSelect.value) || 0;
+    const volumeMl = parseFloat(document.getElementById('volume').value) || 0;
     const desiredPpm = parseFloat(document.getElementById('desiredPpm').value) || 0;
 
     if (currentMa > 0 && volumeMl > 0 && desiredPpm > 0) {
-        const current = currentMa / 1000; // mA to A
-        const volume = volumeMl / 1000;   // mL to L
+        const current = currentMa / 1000; // Convert mA to A
+        const volume = volumeMl / 1000;   // Convert mL to L
         timeInSeconds = (desiredPpm * volume * z * faradayConstant) / (1000 * current * molarMassSilver);
         remainingTime = timeInSeconds;
-        updateUIText({ time: formatTime(timeInSeconds) });
+        const duration = formatTime(timeInSeconds);
+        updateUIText({ time: duration });
+
+        // Record the usage
+        const deviceName = deviceSelect.options[deviceSelect.selectedIndex].text.split(' (')[0];
+        recordUsage(deviceName, currentMa, duration, volumeMl, desiredPpm);
     } else {
         alert(translations.error);
     }
@@ -216,6 +235,65 @@ function handleServiceWorkerUpdates() {
             });
         }).catch(err => console.error('Service Worker registration failed:', err));
     }
+}
+
+// Function to show the statistics screen
+function showStatistics() {
+    const statsContainer = document.getElementById('statistics');
+    const mainContainer = document.querySelector('.container');
+    mainContainer.style.display = 'none';
+    statsContainer.style.display = 'block';
+
+    const statsBody = document.getElementById('statsBody');
+    statsBody.innerHTML = '';
+
+    const stats = JSON.parse(localStorage.getItem('usageStats')) || [];
+    stats.forEach(stat => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${stat.date}</td>
+            <td>${stat.time}</td>
+            <td>${stat.device}</td>
+            <td>${stat.currentMa}</td>
+            <td>${stat.duration}</td>
+            <td>${stat.volume}</td>
+            <td>${stat.ppm}</td>
+        `;
+        statsBody.appendChild(row);
+    });
+}
+
+// Function to hide the statistics screen
+function hideStatistics() {
+    const statsContainer = document.getElementById('statistics');
+    const mainContainer = document.querySelector('.container');
+    statsContainer.style.display = 'none';
+    mainContainer.style.display = 'block';
+}
+
+// Function to export statistics as CSV
+function exportCSV() {
+    const stats = JSON.parse(localStorage.getItem('usageStats')) || [];
+    if (stats.length === 0) {
+        alert(translations.noData);
+        return;
+    }
+
+    const headers = 'Date,Time,Device,Current (mA),Duration (hh:mm:ss),Volume (mL),PPM\n';
+    const csvRows = stats.map(stat => 
+        `${stat.date},${stat.time},${stat.device},${stat.currentMa},${stat.duration},${stat.volume},${stat.ppm}`
+    );
+    const csvContent = headers + csvRows.join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'SilverTimer_Usage_Statistics.csv';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
 }
 
 // Initialize with translations, devices, and SW update handling
