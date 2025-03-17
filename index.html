@@ -20,6 +20,7 @@
         <div id="result" data-i18n="result" data-i18n-params="time:00:00:00">Time: 00:00:00</div>
         <button onclick="startTimer()" id="startBtn" data-i18n="startBtn"></button>
         <button onclick="stopTimer()" id="stopBtn" disabled data-i18n="stopBtn"></button>
+        <button onclick="showStatistics()" data-i18n="statsBtn">Statistics</button>
         <div id="timer" data-i18n="timer" data-i18n-params="time:00:00:00">Remaining: 00:00:00</div>
         <footer>
             <a href="https://github.com/ceotjoe/SilverTimer_PWA/blob/main/README.md" target="_blank" data-i18n="readmeLink">Readme</a>
@@ -32,6 +33,26 @@
             <p data-i18n="modalText"></p>
             <button onclick="stopAlarm()" data-i18n="modalBtn"></button>
         </div>
+    </div>
+
+    <div id="statistics" class="stats-container" style="display: none;">
+        <h2 data-i18n="statsTitle">Usage Statistics</h2>
+        <table id="statsTable">
+            <thead>
+                <tr>
+                    <th data-i18n="date">Date</th>
+                    <th data-i18n="time">Time</th>
+                    <th data-i18n="device">Device</th>
+                    <th data-i18n="current">Current (mA)</th>
+                    <th data-i18n="duration">Duration (hh:mm:ss)</th>
+                    <th data-i18n="volume">Volume (mL)</th>
+                    <th data-i18n="ppm">PPM</th>
+                </tr>
+            </thead>
+            <tbody id="statsBody"></tbody>
+        </table>
+        <button onclick="exportCSV()" data-i18n="exportBtn">Export to CSV</button>
+        <button onclick="hideStatistics()" data-i18n="backBtn">Back</button>
     </div>
 
     <script src="/SilverTimer_PWA/app.js"></script>
