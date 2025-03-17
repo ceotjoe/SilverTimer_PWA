@@ -35,6 +35,26 @@
         </div>
     </div>
 
+    <div id="statistics" class="stats-container" style="display: none;">
+        <h2 data-i18n="statsTitle">Usage Statistics</h2>
+        <table id="statsTable">
+            <thead>
+                <tr>
+                    <th data-i18n="date">Date</th>
+                    <th data-i18n="time">Time</th>
+                    <th data-i18n="device">Device</th>
+                    <th data-i18n="current">Current (mA)</th>
+                    <th data-i18n="duration">Duration (hh:mm:ss)</th>
+                    <th data-i18n="volume">Volume (mL)</th>
+                    <th data-i18n="ppm">PPM</th>
+                </tr>
+            </thead>
+            <tbody id="statsBody"></tbody>
+        </table>
+        <button onclick="exportCSV()" data-i18n="exportBtn">Export to CSV</button>
+        <button onclick="hideStatistics()" data-i18n="backBtn">Back</button>
+    </div>
+
     <script src="/SilverTimer_PWA/app.js"></script>
     <script>
         if ('serviceWorker' in navigator) {
