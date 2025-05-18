@@ -18,5 +18,13 @@
     {
         "name": "30 mA Generator",
         "currentMa": 30
+    },
+    {
+        "name": "40 mA Generator",
+        "currentMa": 40
+    },
+    {
+        "name": "60 mA Generator",
+        "currentMa": 60
     }
 ]
